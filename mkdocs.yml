@@ -4,7 +4,8 @@ nav:
   - 'Home': 'index.md'
   - 'Foreman':
     - 'Installation': 'foreman/installation.md'
-    - 'Certificate Renewal': 'foreman/certs-renew.md'
+    - 'Configuration': 'foreman/configure.md'
+    - 'LE Certificate Replacement': 'foreman/certs-renew.md'
   - 'LetsEncrypt':
     - 'Google Cloud DNS': 'letsencrypt/google-dns.md'
 theme: readthedocs
