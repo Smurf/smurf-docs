@@ -46,7 +46,7 @@ Edit the custom answers file
 
 `$ vim /etc/foreman-installer/katello-answers.yaml`
 
-> **My custom answers file: **[katello-answers.yaml](./katello-answers.yaml)
+> **My custom answers file:** [katello-answers.yaml](./katello-answers.yaml)
 
 `$ foreman-installer --scenario katello`
 
