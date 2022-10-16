@@ -1,0 +1,10 @@
+site_name: Smurf's Docs
+site_url: https://docs.smurf.codes
+nav:
+  - 'Home': 'index.md'
+  - 'Foreman':
+    - 'Installation': 'foreman/installation.md'
+    - 'Certificate Renewal': 'foreman/certs-renew.md'
+  - 'LetsEncrypt':
+    - 'Google Cloud DNS': 'letsencrypt/google-dns.md'
+theme: readthedocs

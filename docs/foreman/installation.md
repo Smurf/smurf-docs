@@ -39,14 +39,17 @@ Create a copy of the `katello-answers.yaml` file.
 `cp /etc/foreman-installer/scenarios.d/katello-answers.yaml /etc/foreman-installer/katello-answers.yaml`
 
 Point `katello.yaml` to the custom answers file.
+
 `vim /etc/foreman-installer/scenarios.d/katello.yaml`
 
 Edit the custom answers file
+
 `$ vim /etc/foreman-installer/katello-answers.yaml`
 
 [katello-answers.yaml](./katello-answers.yaml)
 
 `$ foreman-installer --scenario katello`
+
 # Rawhide Repo Addition
 
 ### Increase Sync Timeout
