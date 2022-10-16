@@ -48,6 +48,8 @@ Edit the custom answers file
 
 > **My custom answers file:** [katello-answers.yaml](./katello-answers.yaml)
 
+## Run the Installer
+
 `$ foreman-installer --scenario katello`
 
 # Rawhide Repo Addition
