@@ -19,14 +19,16 @@ foreman-installer \
 > **NOTE:** This may warn about the size of `ca-bundle.crt`. This warning can safely be ignored.
 
 ```
-export FOREMAN_PROXY=$HOSTNAME
+export FOREMAN_PROXY=$HOSTNAME #EDIT TO MATCH YOUR PROXY HOSTNAME
 foreman-proxy-certs-generate --foreman-proxy-fqdn "$FOREMAN_PROXY" \
 --certs-tar  "~/$FOREMAN_PROXY-certs.tar" \
---server-cert "/etc/letsencrypt/live/foreman.smurf.codes/cert.pem" \
---server-key "/etc/letsencrypt/live/foreman.smurf.codes/privkey.pem" \
+--server-cert "/etc/letsencrypt/live/$HOSTNAME/cert.pem" \
+--server-key "/etc/letsencrypt/live/$HOSTNAME/privkey.pem" \
 --server-ca-cert "/etc/ssl/certs/ca-bundle.crt" \
 --certs-regenerate --certs-update-server
 ```
+
+> **NOTE:** This command assumes the proxy on the main foreman server is being updated. Edit the `FOREMAN_PROXY` value to reflect the proxy to update.
 
 ## Unable to find local issuer
 
