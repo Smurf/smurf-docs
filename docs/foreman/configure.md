@@ -2,6 +2,13 @@
 
 Foreman requires quite a bit of configuration before the first machine can be registered and update against it.
 
+## Setup SSL Certificates
+
+1. [Generate the SSL Certificates](../letsencrypt/google-dns.md)
+    - If Google Cloud DNS is not used follow the instructions provided by Certbot and/or the DNS provider.
+2. [Renew the SSL Certificates](cert-renew.md)
+    - Ensure the paths referenced in these commands are correct.
+
 ## Increase Sync Timeout
 
 Increasing the sync timeout will prevent large packages from causing the repo sync to fail.
