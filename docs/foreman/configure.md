@@ -83,17 +83,14 @@ Even if not kickstarting these values are required for registration of devices.
 
 Create new medium because rawhide has a different URL pattern.
 
-Name: Rawhide mirror
-
-`https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/$arch/os/`
-
-OS Family: Redhat
+- Name: Rawhide mirror
+- `https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/$arch/os/`
+- OS Family: Redhat
 
 ### Operating Systems
 
-Name: Fedora-Rawhide-38
-
-Major Version: 38
-Family: Redhat
-Parition Table: Kickstart Default
-Installation Media: Rawhide mirror
+- Name: Fedora-Rawhide-38
+- Major Version: 38
+- Family: Redhat
+- Parition Table: Kickstart Default
+- Installation Media: Rawhide mirror
