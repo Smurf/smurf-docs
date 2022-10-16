@@ -8,11 +8,15 @@ Increasing the sync timeout will prevent large packages from causing the repo sy
 
 Administer > settings > Content > Sync Connection Timeout > 600 Seconds
 
-## Add Rawhide Repository
+## Add Repositories
+
+Adding repositories requires adding the GPG keys first.
 
 ### Add Content Credentials (GPG Key)
 
 #### Fedora Rawhide
+
+Create a Fedora Rawhide content credential with the following key.
 
 ```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -45,13 +49,15 @@ hPIXZrKocK3KLS9/izJQTRltjMA=
 =PfT7
 -----END PGP PUBLIC KEY BLOCK-----
 ```
-#### RPMFusion
+#### RPMFusion Free/Nonfree
+
+Create a content credential for the RPMFusion Free and Nonfree repositories.
 
 https://rpmfusion.org/keys
 
 ### Add Rawhide Product
 
-Create a new product and assign it the Rawhide GPG key that was created.
+Create a new product with the name "Rawhide"
 
 #### Add Rawhide Repository
 
@@ -59,6 +65,7 @@ Create a new product and assign it the Rawhide GPG key that was created.
 - Upstream URL: `http://iad.mirror.rackspace.com/fedora/development/rawhide/Everything/x86_64/os/`
 - Download Policy: On Demand
 - Retain Package Versions: 4
+- GPG Key: Rawhide GPG Key
 
 #### Add RPM Fusion Nonfree Repository
 
@@ -67,6 +74,7 @@ Create a new product and assign it the Rawhide GPG key that was created.
     - `http://mirror.math.princeton.edu/pub/rpmfusion/nonfree/fedora/development/rawhide/Everything/x86_64/os/`
 - Download Policy: On Demand
 - Retain Package Versions: 4
+- GPG Key: RPM Fusion Nonfree GPG Key
 
 #### Add RPM Fusion Free Repository
 
@@ -74,6 +82,7 @@ Create a new product and assign it the Rawhide GPG key that was created.
 - Upstream URL: `http://mirror.math.princeton.edu/pub/rpmfusion/free/fedora/development/rawhide/Everything/x86_64/os/`
 - Download Policy: On Demand
 - Retain Package Versions: 4
+- GPG Key: RPM Fusion Free GPG Key
 
 ## Provisioning Setup
 
@@ -81,7 +90,7 @@ Even if not kickstarting these values are required for registration of devices.
 
 ### Installation Media
 
-Create new medium because rawhide has a different URL pattern.
+Create new medium because rawhide has a different URL pattern than mainline Feodra or RHEL releases.
 
 - Name: Rawhide mirror
 - `https://dl.fedoraproject.org/pub/fedora/linux/development/rawhide/Everything/$arch/os/`
