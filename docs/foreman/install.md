@@ -1,4 +1,4 @@
-# Foreman Notes for Rocky Linux 8
+# Foreman Installation on Rocky Linux 8
 
 ### Dependencies
 #### Enable EPEL
@@ -26,7 +26,7 @@ https://yum.theforeman.org/katello/4.6/katello/el8/x86_64/
 # dnf localinstall https://yum.theforeman.org/katello/4.6/katello/el8/x86_64/katello-repos-latest.rpm
 ```
 
-### Enable Katello and Pulp modules
+#### Enable Katello and Pulp modules
 
 ```
 dnf module enable katello:el8 pulpcore:el8
@@ -52,4 +52,6 @@ Edit the custom answers file
 
 `$ foreman-installer --scenario katello`
 
+## Configure The Instance
 
+See the [configuration documentation](configuration.md) for details on getting started.

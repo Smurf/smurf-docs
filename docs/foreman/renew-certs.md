@@ -1,6 +1,10 @@
 # Renewing Certificates
 
-> **NOTE** This assumes that foreman is already configured and certificates have already been generated via letsencrypt.
+> **NOTE** This assumes that Foreman is already installed per [the installation instructions](install.md) and certificates have already been generated via letsencrypt.
+
+## Configure Foreman and Puppet Certificates
+
+This changes the Apache, Katello, and Puppet certificates.
 
 ```
 foreman-installer \
@@ -18,6 +22,12 @@ foreman-installer \
 
 > **NOTE:** This may warn about the size of `ca-bundle.crt`. This warning can safely be ignored.
 
+## Configure Foreman Proxy Certificates
+
+The Foreman proxy that is automatically installed next to Foreman+Katello must have its certificates updated as well. If these certificates are not updated machines will not be able to register or report to Foreman.
+
+> **NOTE:** This command assumes the proxy on the main foreman server is being updated. Edit the `FOREMAN_PROXY` value to reflect the proxy to update.
+
 ```
 export FOREMAN_PROXY=$HOSTNAME #EDIT TO MATCH YOUR PROXY HOSTNAME
 foreman-proxy-certs-generate --foreman-proxy-fqdn "$FOREMAN_PROXY" \
@@ -27,8 +37,6 @@ foreman-proxy-certs-generate --foreman-proxy-fqdn "$FOREMAN_PROXY" \
 --server-ca-cert "/etc/ssl/certs/ca-bundle.crt" \
 --certs-regenerate --certs-update-server
 ```
-
-> **NOTE:** This command assumes the proxy on the main foreman server is being updated. Edit the `FOREMAN_PROXY` value to reflect the proxy to update.
 
 ## Unable to find local issuer
 

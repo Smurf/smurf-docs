@@ -34,12 +34,12 @@ Create the DNS zone that should have certificates managed by certbot.
 ### Create a gcloud project and enable public CA
 
 ```
-gcloud projects create PROJECT_ID
+gcloud projects create $PROJECT_ID
 
-gcloud config set project PROJECT_ID
+gcloud config set project $PROJECT_ID
 
-gcloud projects add-iam-policy-binding PROJECT_ID \
-  --member=user:USER \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member=user:$GOOGLE_USER \
   --role=roles/publicca.externalAccountKeyCreator
 
 gcloud services enable publicca.googleapis.com
@@ -52,12 +52,14 @@ Create a HMAC and EAB and register with the public CA.
 ```
 gcloud beta publicca external-account-keys create
 
+#$EAB_KID and $EAB_HMAC_KEY will be shown.
+
 certbot register \
-    --email "EMAIL_ADDRESS" \
+    --email "$GOOGLE_USER" \
     --no-eff-email \
-    --server "SERVER" \
-    --eab-kid "EAB_KID" \
-    --eab-hmac-key "EAB_HMAC_KEY"
+    --server "$FQDN" \
+    --eab-kid "$EAB_KID" \
+    --eab-hmac-key "$EAB_HMAC_KEY"
 ```
 ### Create a service account
 
@@ -77,5 +79,5 @@ certbot register \
 ### Request Certificate from Google CA
 
 ```
-certbot certonly --dns-google --dns-google-credentials /path/to/credential.json -d DOMAIN -vv
+certbot certonly --dns-google --dns-google-credentials /path/to/credential.json -d $FQDN -vv
 ```
