@@ -5,8 +5,7 @@
 Create a Fedora Rawhide content credential with the following key.
 
 ```
------BEGIN PGP PUBLIC KEY BLOCK-----
-
+-----BEGIN PGP PUBLIC KEY BLOCK-----WO
 mQINBGAcScoBEADLf8YHkezJ6adlMYw7aGGIlJalt8Jj2x/B2K+hIfIuxGtpVj7e
 LRgDU76jaT5pVD5mFMJ3pkeneR/cTmqqQkNyQshX2oQXwEzUSb1CNMCfCGgkX8Q2
 zZkrIcCrF0Q2wrKblaudhU+iVanADsm18YEqsb5AU37dtUrM3QYdWg9R+XiPfV8R

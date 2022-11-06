@@ -1,6 +1,6 @@
 # Renewing Certificates
 
-> **NOTE** This assumes that Foreman is already installed per [the installation instructions](install.md) and certificates have already been generated via letsencrypt.
+> **NOTE** This assumes that Foreman is already installed per [the quickstart guide](quickstart.md) and certificates have already been generated via letsencrypt.
 
 ## Configure Foreman and Puppet Certificates
 
@@ -9,24 +9,12 @@ This changes the Apache, Katello, and Puppet certificates.
 ```
 foreman-installer \
   --scenario katello \
-  --foreman-server-ssl-cert /etc/letsencrypt/live/$HOSTNAME/cert.pem \
-  --foreman-server-ssl-chain /etc/letsencrypt/live/$HOSTNAME/fullchain.pem \
-  --foreman-server-ssl-key /etc/letsencrypt/live/$HOSTNAME/privkey.pem \
-  --foreman-server-ssl-ca /etc/pki/ca-trust/source/anchors/x1-chain.pem \
-  --foreman-client-ssl-cert /etc/letsencrypt/live/$HOSTNAME/cert.pem \
-  --foreman-client-ssl-key /etc/letsencrypt/live/$HOSTNAME/privkey.pem \
-  --foreman-client-ssl-ca /etc/pki/ca-trust/source/anchors/x1-chain.pem \
-  --foreman-proxy-ssl-cert /etc/letsencrypt/live/$HOSTNAME/cert.pem \
-  --foreman-proxy-ssl-ca /etc/pki/ca-trust/source/anchors/x1-chain.pem \
-  --foreman-proxy-ssl-key /etc/letsencrypt/live/$HOSTNAME/privkey.pem \
-  --puppet-server-foreman-ssl-ca /etc/pki/ca-trust/source/anchors/x1-chain.pem \
-  --certs-server-cert "/etc/letsencrypt/live/$HOSTNAME/cert.pem" \
+  --certs-server-cert "/etc/letsencrypt/live/$HOSTNAME/fullchain.pem" \
   --certs-server-key "/etc/letsencrypt/live/$HOSTNAME/privkey.pem" \
   --certs-server-ca-cert "/etc/pki/ca-trust/source/anchors/x1-chain.pem" \
-  --certs-update-server --certs-update-server-ca
+  --certs-update-server --certs-update-server-ca --certs-update-all
 ```
-
-> **NOTE:** This may warn about the size of `ca-bundle.crt`. This warning can safely be ignored.
+> **NOTE:** This assumes LE, depending on the CA the ca-cert may vary!
 
 ## Configure Foreman Proxy Certificates
 
@@ -35,14 +23,16 @@ The Foreman proxy that is automatically installed next to Foreman+Katello must h
 > **NOTE:** This command assumes the proxy on the main foreman server is being updated. Edit the `FOREMAN_PROXY` value to reflect the proxy to update.
 
 ```
-export FOREMAN_PROXY=$HOSTNAME #EDIT TO MATCH YOUR PROXY HOSTNAME
+FOREMAN_PROXY=$HOSTNAME \
 foreman-proxy-certs-generate --foreman-proxy-fqdn "$FOREMAN_PROXY" \
---certs-tar  "~/$FOREMAN_PROXY-certs.tar" \
+--certs-tar  "/root/$FOREMAN_PROXY-certs.tar" \
 --server-cert "/etc/letsencrypt/live/$HOSTNAME/cert.pem" \
 --server-key "/etc/letsencrypt/live/$HOSTNAME/privkey.pem" \
---server-ca-cert "/etc/ssl/certs/ca-bundle.crt" \
+--server-ca-cert "/etc/pki/ca-trust/source/anchors/x1-chain.pem" \
  --certs-update-server
 ```
+
+> **NOTE:** This assumes LE, depending on the CA the ca-cert may vary!
 
 ## Unable to find local issuer
 

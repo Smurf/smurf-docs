@@ -1,4 +1,4 @@
-# Configuring Foreman for Fedora Rawhide
+# Foreman Quickstart
 
 Foreman requires quite a bit of configuration before the first machine can be registered and update against it.
 
@@ -8,6 +8,10 @@ Foreman requires quite a bit of configuration before the first machine can be re
     - If Google Cloud DNS is not used follow the instructions provided by Certbot and/or the DNS provider.
 2. [Renew the SSL Certificates](cert-renew.md)
     - Ensure the paths referenced in these commands are correct.
+
+## Install Foreman
+
+1. [Foreman Installation Guide](./install.md)
 
 ## Increase Sync Timeout
 
