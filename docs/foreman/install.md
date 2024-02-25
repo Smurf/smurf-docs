@@ -91,7 +91,7 @@ foreman-installer \
 
 #### Discovering Options
 
-There are literally a hundred options for the `foreman-installer`. To discover them look at the `--full-help` page.
+There are literally hundreds of options for `foreman-installer`. To discover them look at the `--full-help` page.
 
 ```
 foreman-installer --scenario katello --full-help | less
