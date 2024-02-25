@@ -40,7 +40,7 @@ i+YIbPKH1TAOMwiyxC106mIL705p+ORf5zATZMyB8Y0OvRIz5aKkBDFZM2QN6A==
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 
-## Add Rawhide Repository
+## Add Repository
 
 - Architecture: x86_64
 - Upstream URL: `https://repo.uccs.edu/rocky-linux/9/BaseOS/x86_64/os/`
