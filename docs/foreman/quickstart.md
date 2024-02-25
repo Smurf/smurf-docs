@@ -58,7 +58,7 @@ Navigate to the added product and add the following repositories.
 
 At first lifecycle management in Foreman may seem overly complicated. This chart concisely explains how lifecycle paths, life cycle environments, content views and repositores interact.
 
-!(lifecycle chart)[img/foreman-lifecycle-dark-trans.png]
+![lifecycle chart](img/foreman-lifecycle-dark-trans.png)
 
 ### Add Lifecycle Environments
 
