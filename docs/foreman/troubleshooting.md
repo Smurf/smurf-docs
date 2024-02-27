@@ -22,7 +22,8 @@ Foreman and the foreman-proxy log to `/var/log/foreman/` and `/var/log/foreman-p
 
 This can happen when dependencies in the RPM for the `cockpit-system` package do not get installed. To fix this run a one off job on the affected host to install `cockpit` and `cockpit-ws`
 
-> **That didn't work!!!** If the above doesn't work force a one off job that **reinstalls** the packages with `dnf reinstall`.
+> **That didn't work!!!** 
+> If the above doesn't work force a one off job that **reinstalls** the packages with `dnf reinstall`.
 
 ### I keep getting a blue "Try Again" when trying to enter the web console
 
