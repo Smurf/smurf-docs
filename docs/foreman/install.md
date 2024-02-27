@@ -4,7 +4,7 @@
 
 ## Dependencies
 
-> **NOTE:** These dependencies may be installed via the [setup-foreman-katello.sh](setup-foreman-katello.sh)
+> **NOTE:** These dependencies may be installed via the [setup-foreman-katello.sh](scripts/install-foreman-katello.sh)
 
 ### Enable EPEL
 
@@ -53,7 +53,7 @@ Run the installer with the options that you want enabled.
 
 ```
 #! /bin/bash
-# foreman-installer.sh
+# foreman-configure.sh
 FQDN="foreman.smurf.codes"
 CERT_PATH="/etc/letsencrypt/live/$FQDN"
 PRIV_KEY="$CERT_PATH/privkey.pem"
@@ -95,17 +95,6 @@ There are literally hundreds of options for `foreman-installer`. To discover the
 
 ```
 foreman-installer --scenario katello --full-help | less
-```
-
-### Set Certificate Permissions
-
-`foreman-proxy` needs permissions to read supplied certificates.
-
-```
-FQDN="foreman.smurf.codes"
-CERT_PATH="/etc/letsencrypt/live/$FQDN"
-
-setfacl -R -m u:foreman:rx "$CERT_PATH/../.."
 ```
 
 ## Configure The Instance
