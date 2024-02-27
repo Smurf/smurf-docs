@@ -1,6 +1,6 @@
 # Foreman Installation on Rocky Linux 8
 
-> **Please ensure that the steps required prior to installation in the [Quickstart Guide](./quickstart.md) are adhered to.**
+> **Please ensure that the steps required prior to installation in the [Installation Guide](./quickstart.md) are adhered to.**
 
 ## Dependencies
 
@@ -103,6 +103,8 @@ foreman-installer --scenario katello --full-help | less
 The `foreman-proxy` service needs permissions to read supplied certificates.
 
 ```
+#! /bin/bash
+# foreman-cert-permissions.md
 FQDN="foreman.smurf.codes"
 CERT_PATH="/etc/letsencrypt/live/$FQDN"
 

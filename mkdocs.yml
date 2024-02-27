@@ -3,9 +3,12 @@ site_url: https://docs.smurf.codes
 nav:
   - 'Home': 'index.md'
   - 'Foreman':
-    - 'QuickStart Guide': 'foreman/quickstart.md'
+    - 'Quickstart Guide': 'foreman/quickstart.md'
     - 'Installation': 'foreman/install.md'
-    - 'Certificate Renewal': 'foreman/renew-certs.md'
+    - 'Repos and Lifecycle': 'foreman/renew-certs.md'
+    - "Activation Keys": "foreman/activation-keys.md"
+    - "Cockpit": "foreman/cockpit.md"
+    - "Troubleshooting": "foreman/troubleshooting.md"
   - 'LetsEncrypt':
     - 'Google Cloud DNS': 'letsencrypt/google-dns.md'
 theme: readthedocs
