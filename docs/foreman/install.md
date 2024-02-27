@@ -96,6 +96,19 @@ There are literally hundreds of options for `foreman-installer`. To discover the
 ```
 foreman-installer --scenario katello --full-help | less
 ```
+## Set Certificate Permissions
+
+> **NOTE:** Depending on your DNS provider the paths provided may change.
+
+The `foreman-proxy` service needs permissions to read supplied certificates.
+
+```
+FQDN="foreman.smurf.codes"
+CERT_PATH="/etc/letsencrypt/live/$FQDN"
+
+setfacl -R -m u:foreman:rx "$CERT_PATH/../.."
+setfacl -R -m u:foreman-proxy:rx "$CERT_PATH/../.."
+```
 
 ## Configure The Instance
 
