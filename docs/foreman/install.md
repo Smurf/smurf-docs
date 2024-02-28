@@ -4,7 +4,7 @@
 
 ## Dependencies
 
-> **NOTE:** These dependencies may be installed via the [setup-foreman-katello.sh](scripts/install-foreman-katello.sh)
+> **NOTE:** These dependencies may be installed via the [setup-foreman-katello.sh](scripts/foreman-install-dependencies.sh)
 
 ### Enable EPEL
 
@@ -60,10 +60,13 @@ PRIV_KEY="$CERT_PATH/privkey.pem"
 CERT="$CERT_PATH/fullchain.pem"
 CHAIN="$CERT_PATH/chain.pem"
 CA="/etc/ssl/certs/ca-bundle.crt"
+DHCP_IP="192.168.1.1"
+DHCP_LEASES="/mnt/dhcpd-db/dhcpd.leases"
+DHCP_CONFIGS="/mnt/dhcpd-etc/dhcpd.conf"
+OMAPI_NAME="omapi_key"
+OMAPI_SECRET="mysecret"
 foreman-installer \
   --scenario katello \
-  # Optional --no-enable-puppet \
-  # Optional --no-enable-foreman-cli \
   --enable-foreman-plugin-ansible \
   --enable-foreman-plugin-remote-execution \
   --enable-foreman-plugin-tasks \
@@ -85,9 +88,10 @@ foreman-installer \
   --foreman-proxy-foreman-ssl-ca "$CA" \
   --puppet-server-foreman-ssl-key "$PRIV_KEY" \
   --puppet-server-foreman-ssl-cert "$CERT" \
-  --puppet-server-foreman-ssl-ca "$CA" 
-
+  --puppet-server-foreman-ssl-ca "$CA" \
 ```
+
+> **NOTE:** For network booting foreman-installer options please see the [DHCP provisioning](provisioning/dhcp.md) documentation.
 
 #### Discovering Options
 
