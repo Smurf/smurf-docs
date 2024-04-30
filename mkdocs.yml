@@ -11,4 +11,6 @@ nav:
     - "Troubleshooting": "foreman/troubleshooting.md"
   - 'LetsEncrypt':
     - 'Google Cloud DNS': 'letsencrypt/google-dns.md'
+  - 'OPNSense'
+    - 'Configuring an NFS Share': 'opnsense/nfs-share.md'
 theme: readthedocs
