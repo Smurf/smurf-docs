@@ -26,3 +26,8 @@ ln -l /var/dhcpd/etc /exports/var/dhcpd/etc
 ```
 
 ## Edit the `/etc/exports` file
+
+```
+/exports/var/dhcpd/etc -maproot=root -alldirs -network 192.168.1.0 -mask 255.255.255.0
+/exports/var/dhcpd/var/db -maproot=root -alldirs -network 192.168.1.0 -mask 255.255.255.0
+```
