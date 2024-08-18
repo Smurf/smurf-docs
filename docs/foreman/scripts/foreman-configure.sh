@@ -1,5 +1,6 @@
 #! /bin/bash
 # foreman-configure.sh
+LOG_LEVEL="DEBUG"
 FQDN="foreman.smurf.codes"
 CERT_PATH="/etc/letsencrypt/live/$FQDN"
 PRIV_KEY="$CERT_PATH/privkey.pem"
@@ -11,6 +12,8 @@ DHCP_LEASES="/mnt/dhcpd-db/dhcpd.leases"
 DHCP_CONFIGS="/mnt/dhcpd-etc/dhcpd.conf"
 OMAPI_NAME="omapi_key"
 OMAPI_SECRET="mysecret"
+DNS_SERVER="192.168.1.1"
+TSIG_KEY="/etc/rndc.key"
 foreman-installer \
   --scenario katello \
   --enable-foreman-plugin-ansible \
@@ -34,5 +37,20 @@ foreman-installer \
   --foreman-proxy-foreman-ssl-ca "$CA" \
   --puppet-server-foreman-ssl-key "$PRIV_KEY" \
   --puppet-server-foreman-ssl-cert "$CERT" \
-  --puppet-server-foreman-ssl-ca "$CA" 
+  --puppet-server-foreman-ssl-ca "$CA" \
+  --foreman-proxy-dhcp true \
+  --foreman-proxy-dhcp-managed false \
+  --foreman-proxy-dhcp-config "$DHCP_CONFIGS" \
+  --foreman-proxy-dhcp-leases "$DHCP_LEASES" \
+  --foreman-proxy-dhcp-server "$DHCP_IP" \
+  --foreman-proxy-dns true \
+  --foreman-proxy-dns-managed false \
+  --foreman-proxy-dns-server "$DNS_SERVER" \
+  --foreman-proxy-keyfile "$TSIG_KEY" \
+  --foreman-proxy-dns-provider nsupdate \
+  --foreman-proxy-plugin-dhcp-remote-isc-key-name "$OMAPI_NAME" \
+  --foreman-proxy-plugin-dhcp-remote-isc-key-secret "\'$OMAPI_SECRET\'" \
+  --foreman-proxy-tftp true \
+  --foreman-proxy-tftp-managed true \
+  --foreman-proxy-log-level "$LOG_LEVEL"
 

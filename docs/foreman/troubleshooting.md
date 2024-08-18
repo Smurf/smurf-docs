@@ -32,8 +32,8 @@ This can be due to the foreman installer configuring the cockpit plugin with the
 You can configure the certificates used for the cockpit web console by editing `/etc/foreman/cockpit/foreman-cockpit-session.yml` **on the foreman instance**.
 
 > **Troubleshooting steps:** 
->    1. SSH into the affected host
->    2. `journalctl -xe` and search for `foreman-cockpit-settings`. 
+>    1. SSH into the foreman host
+>    2. `journalctl -u foreman-cockpit` and search for `foreman-cockpit-settings`. 
 >    3. If a `certificate verify fail` error is occuring confirm that the correct certificates are being used in the log message directly above the error.
 >    4. Confirm the correct certificates are used in the file `/etc/foreman/cockpit/foreman-cockpit-session.yml` on the foreman instance.
 
