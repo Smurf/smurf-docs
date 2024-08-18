@@ -1,6 +1,10 @@
-# Repositories and Product
+# Repositories and Products
 
-Before configuring any repositories or products the sync timeout should be increased.
+Repositories contain packages. Products are sets of repositories.
+
+
+## Make Syncing More Reliable
+Before configuring any repositories or products some changes are required to make syncing repositories more reliable. 
 
 ### Increase Sync Timeout
 
@@ -31,6 +35,15 @@ At first lifecycle management in Foreman may seem overly complicated. This chart
 
 ![lifecycle chart](img/foreman-lifecycle-dark-trans.png)
 
+### Lifecycle Environments
+
+Lifecycle environments manage the versioning of packages available to a host via content views. A lifecycle environment is a **version** of a content view. The content view itself manages what version of content is available to hosts in a lifecycle environment.
+
+### Content Views
+
+A content view consists of a set of repositories. Content views are snapshots in time of different repositories synced by foreman. When repositories are synced content views can be updated to promote the set of packages to a particular lifecycle environment.
+
+
 ### Add Lifecycle Environments
 
 Lifecycle environments are key to managing pinned versions of packages in Foreman. Lifecycle environments are assigned to content views.
@@ -48,4 +61,16 @@ Content views are **snapshots** of sets of repositories.
 2. Click **Create content view**
 3. Name the Content View `Rocky 9`
 4. Add the Rocky 9 repositories that were added above.
+
+### Publish Content View
+
+
+
+1. Content > Lifecycle > Content Veiws
+2. Click the `Rocky 9` content view
+3. Click the `Versions` tab.
+4. Click `Publish New Version`
+
+### Updating Content Views
+
 

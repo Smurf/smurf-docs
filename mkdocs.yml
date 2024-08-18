@@ -1,16 +1,21 @@
-site_name: Smurf's Docs
-site_url: https://docs.smurf.codes
+site_name: "Smurf's Docs"
+site_url: "https://docs.smurf.codes"
 nav:
   - 'Home': 'index.md'
   - 'Foreman':
     - 'Quickstart Guide': 'foreman/quickstart.md'
     - 'Installation': 'foreman/install.md'
-    - 'Repos and Lifecycle': 'foreman/renew-certs.md'
+    - 'Repos and Lifecycle': 'foreman/repos-lifecycles.md'
     - "Activation Keys": "foreman/activation-keys.md"
     - "Cockpit": "foreman/cockpit.md"
     - "Troubleshooting": "foreman/troubleshooting.md"
   - 'LetsEncrypt':
-    - 'Google Cloud DNS': 'letsencrypt/google-dns.md'
-  - 'OPNSense'
+    - 'Google Cloud DNS': 'letsencrypt/certbot/google-dns.md'
+    - 'Cloudflare DNS': 'letsencrypt/certbot/cloudflare.md'
+  - 'OPNSense':
     - 'Configuring an NFS Share': 'opnsense/nfs-share.md'
 theme: readthedocs
+markdown_extensions:
+  - toc:
+      permalink: "#"
+      baselevel: 2

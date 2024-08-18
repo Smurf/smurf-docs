@@ -72,6 +72,18 @@ This guide covers both Google Cloud DNS and Cloudflare. See the [Setup SSL Certi
 
 Run the installer with the options that you want enabled.
 
+### Discovering foreman-installer Options
+
+There are literally hundreds of options for `foreman-installer`. To discover them look at the `--full-help` page.
+
+```
+foreman-installer --scenario katello --full-help | less
+```
+
+### Foreman Installation Script
+
+The following script can be customized for your foreman install. This script sets up a remote dhcp server, remote dns server, and local tftp server. Both foreman and foreman-proxy will use letsencrypt certificates. This makes registering to foreman easier as the katello certs package doesn't need to be shuttled around.
+
 ```
 #! /bin/bash
 # foreman-configure.sh
@@ -131,18 +143,13 @@ foreman-installer \
 
 ```
 
-> **NOTE:** For network booting foreman-installer options please see the [DHCP provisioning](provisioning/dhcp.md) documentation.
+### Note Down The Admin Password
 
-#### Discovering Options
+Once install completes for the first time a username and password will be provided. Note down the `admin` password shown.
 
-There are literally hundreds of options for `foreman-installer`. To discover them look at the `--full-help` page.
-
-```
-foreman-installer --scenario katello --full-help | less
-```
 ## Set Certificate Permissions
 
-> **NOTE:** Depending on your DNS provider the paths provided may change.
+> **NOTE:** Depending on your DNS and certificate provider the paths provided may change.
 
 The `foreman-proxy` service needs permissions to read supplied certificates.
 
@@ -154,8 +161,18 @@ CERT_PATH="/etc/letsencrypt/live/$FQDN"
 
 setfacl -R -m u:foreman:rx "$CERT_PATH/../.."
 setfacl -R -m u:foreman-proxy:rx "$CERT_PATH/../.."
+
+# Restart proxy and apache server
+systemctl restart foreman-proxy
+systemctl restart httpd
 ```
 
-## Configure The Instance
+## Login to Foreman
 
-Continue at the [configure Foreman section](quickstart.md#configure-foreman) of the Quickstart Guide to continue.
+With certificates set and dependent services restarted login to your foreman instance using the username `admin` and password provided after `foreman-installer` ran.
+
+## Next Step: Configure Repos and Lifecycles
+
+With Foreman up and running the next step is to add repositories, products, and lifecycles.
+
+Continue to the [configure repos and lifecyles](repos-lifecycles.md) of the docsdocs
